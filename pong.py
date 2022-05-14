@@ -30,6 +30,42 @@ paddle_b.penup()
             #x coord, y coord
 paddle_b.goto(350, 0)
 # Ball
+ball = turtle.Turtle()
+ball.speed(0)
+ball.color("white")
+ball.shape("square")
+ball.penup()
+            #x coord, y coord
+ball.goto(0, 0)
+
+# Functions
+def paddle_a_up():
+    y = paddle_a.ycor()
+    y += 20
+    paddle_a.sety(y)
+
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
+
+def paddle_b_up():
+    y = paddle_b.ycor()
+    y += 20
+    paddle_b.sety(y)
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    y -= 20
+    paddle_b.sety(y)
+
+# Keyboard binding
+window.listen()
+window.onkeypress(paddle_a_up, "w")
+window.onkeypress(paddle_a_down, "s")
+window.onkeypress(paddle_b_up, "Up")
+window.onkeypress(paddle_b_down, "Down")
+
 
 #Main game loop
 while True:
