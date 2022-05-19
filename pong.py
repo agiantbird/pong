@@ -6,6 +6,10 @@ window.bgcolor("black")
 window.setup(width=800, height=600)
 window.tracer(0)
 
+# Score
+score_a = 0
+score_b = 0
+
 # Paddle A
     # lowercase t turtle for module
     # capital T Turtle for class in module
@@ -40,6 +44,15 @@ ball.goto(0, 0)
 # d = delta; might have to play with these numbers
 ball.dx = 2
 ball.dy = -2
+
+# pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
 
 # Functions
 def paddle_a_up():
@@ -93,10 +106,16 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_a += 1
+        pen.clear()
+        pen.write(f"Player A: {score_a} Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_b += 1
+        pen.clear()
+        pen.write(f"Player A: {score_a} Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
 
     # Paddle and ball collision
     # right paddle
