@@ -34,6 +34,31 @@ paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 paddle_b.penup()
             #x coord, y coord
 paddle_b.goto(350, 0)
+
+# Paddle C
+    # lowercase t turtle for module
+    # capital T Turtle for class in module
+paddle_c = turtle.Turtle()
+paddle_c.speed(0)
+paddle_c.shape("square")
+paddle_c.color("white")
+paddle_c.shapesize(stretch_wid=1, stretch_len=5)
+paddle_c.penup()
+            #x coord, y coord
+paddle_c.goto(0, 260)
+
+# Paddle D
+    # lowercase t turtle for module
+    # capital T Turtle for class in module
+paddle_d = turtle.Turtle()
+paddle_d.speed(0)
+paddle_d.shape("square")
+paddle_d.color("white")
+paddle_d.shapesize(stretch_wid=1, stretch_len=5)
+paddle_d.penup()
+            #x coord, y coord
+paddle_d.goto(0, -260)
+
 # Ball
 ball = turtle.Turtle()
 ball.speed(0)
@@ -76,12 +101,37 @@ def paddle_b_down():
     y -= 20
     paddle_b.sety(y)
 
+def paddle_c_left():
+    x = paddle_c.xcor()
+    x -= 20
+    paddle_c.setx(x)
+
+def paddle_c_right():
+    x = paddle_c.xcor()
+    x += 20
+    paddle_c.setx(x)
+
+def paddle_d_left():
+    x = paddle_d.xcor()
+    x -= 20
+    paddle_d.setx(x)
+
+def paddle_d_right():
+    x = paddle_d.xcor()
+    x += 20
+    paddle_d.setx(x)
+
+
 # Keyboard binding
 window.listen()
 window.onkeypress(paddle_a_up, "w")
 window.onkeypress(paddle_a_down, "s")
+window.onkeypress(paddle_c_left, "a")
+window.onkeypress(paddle_c_right, "d")
 window.onkeypress(paddle_b_up, "Up")
 window.onkeypress(paddle_b_down, "Down")
+window.onkeypress(paddle_d_left, "Left")
+window.onkeypress(paddle_d_right, "Right")
 
 
 
