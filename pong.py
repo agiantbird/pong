@@ -17,7 +17,7 @@ score_b = 0
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
 paddle_a.shape("square")
-paddle_a.color("white")
+paddle_a.color("blue")
 paddle_a.shapesize(stretch_wid=5, stretch_len=1)
 paddle_a.penup()
             #x coord, y coord
@@ -29,7 +29,7 @@ paddle_a.goto(-350, 0)
 paddle_b = turtle.Turtle()
 paddle_b.speed(0)
 paddle_b.shape("square")
-paddle_b.color("white")
+paddle_b.color("red")
 paddle_b.shapesize(stretch_wid=5, stretch_len=1)
 paddle_b.penup()
             #x coord, y coord
@@ -41,7 +41,7 @@ paddle_b.goto(350, 0)
 paddle_c = turtle.Turtle()
 paddle_c.speed(0)
 paddle_c.shape("square")
-paddle_c.color("white")
+paddle_c.color("blue")
 paddle_c.shapesize(stretch_wid=1, stretch_len=5)
 paddle_c.penup()
             #x coord, y coord
@@ -53,7 +53,7 @@ paddle_c.goto(0, 260)
 paddle_d = turtle.Turtle()
 paddle_d.speed(0)
 paddle_d.shape("square")
-paddle_d.color("white")
+paddle_d.color("red")
 paddle_d.shapesize(stretch_wid=1, stretch_len=5)
 paddle_d.penup()
             #x coord, y coord
@@ -78,7 +78,7 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 260)
-pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
+pen.write("Player Red: 0  Player Blue: 0", align="center", font=("Courier", 24, "normal"))
 
 # Functions
 def paddle_a_up():
@@ -145,30 +145,44 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Border checking
+    # if ball.ycor() > 290:
+    #     ball.sety(290)
+    #     ball.dy *= -1
+    #     os.system("afplay bounce.wav&")
+
+    # if ball.ycor() < -290:
+    #     ball.sety(-290)
+    #     ball.dy *= -1
+    #     os.system("afplay bounce.wav&")
+
     if ball.ycor() > 290:
-        ball.sety(290)
+        ball.goto(0, 0)
         ball.dy *= -1
-        os.system("afplay bounce.wav&")
+        score_a += 1
+        pen.clear()
+        pen.write(f"Player Red: {score_a} Player Blue: {score_b}", align="center", font=("Courier", 24, "normal"))
 
     if ball.ycor() < -290:
-        ball.sety(-290)
+        ball.goto(0, 0)
         ball.dy *= -1
-        os.system("afplay bounce.wav&")
+        score_b += 1
+        pen.clear()
+        pen.write(f"Player Red: {score_a} Player Blue: {score_b}", align="center", font=("Courier", 24, "normal"))
 
 
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
-        score_a += 1
+        score_b += 1
         pen.clear()
-        pen.write(f"Player A: {score_a} Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
+        pen.write(f"Player Red: {score_a} Player Blue: {score_b}", align="center", font=("Courier", 24, "normal"))
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
-        score_b += 1
+        score_a += 1
         pen.clear()
-        pen.write(f"Player A: {score_a} Player B: {score_b}", align="center", font=("Courier", 24, "normal"))
+        pen.write(f"Player Red: {score_a} Player Blue: {score_b}", align="center", font=("Courier", 24, "normal"))
 
     # Paddle and ball collision
     # right paddle
