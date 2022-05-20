@@ -121,7 +121,6 @@ def paddle_d_right():
     x += 20
     paddle_d.setx(x)
 
-
 # Keyboard binding
 window.listen()
 window.onkeypress(paddle_a_up, "w")
@@ -133,9 +132,6 @@ window.onkeypress(paddle_b_down, "Down")
 window.onkeypress(paddle_d_left, "Left")
 window.onkeypress(paddle_d_right, "Right")
 
-
-
-
 #Main game loop
 while True:
     # animate whole game
@@ -143,17 +139,6 @@ while True:
     # move the ball
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
-
-    # Border checking
-    # if ball.ycor() > 290:
-    #     ball.sety(290)
-    #     ball.dy *= -1
-    #     os.system("afplay bounce.wav&")
-
-    # if ball.ycor() < -290:
-    #     ball.sety(-290)
-    #     ball.dy *= -1
-    #     os.system("afplay bounce.wav&")
 
     if ball.ycor() > 290:
         ball.goto(0, 0)
@@ -195,4 +180,18 @@ while True:
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
         ball.setx(-340)
         ball.dx *= -1
+        os.system("afplay bounce.wav&")
+
+    # top paddle
+
+    if (ball.ycor() > 250 and ball.ycor() < 260) and (ball.xcor() < paddle_c.xcor() + 40 and ball.xcor() > paddle_c.xcor() - 40):
+        ball.sety(250)
+        ball.dy *= -1
+        os.system("afplay bounce.wav&")
+
+    # bottom paddle
+
+    if (ball.ycor() < -250 and ball.ycor() > -260) and (ball.xcor() < paddle_d.xcor() + 40 and ball.xcor() > paddle_d.xcor() - 40):
+        ball.sety(-250)
+        ball.dy *= -1
         os.system("afplay bounce.wav&")
